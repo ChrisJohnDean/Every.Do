@@ -16,6 +16,8 @@
 		890623722045F5A900A4BAA3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 890623712045F5A900A4BAA3 /* main.m */; };
 		8906237C2045F5A900A4BAA3 /* Every_DoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8906237B2045F5A900A4BAA3 /* Every_DoTests.m */; };
 		890623872045F5A900A4BAA3 /* Every_DoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 890623862045F5A900A4BAA3 /* Every_DoUITests.m */; };
+		890623962045F67700A4BAA3 /* ToDo.m in Sources */ = {isa = PBXBuildFile; fileRef = 890623952045F67700A4BAA3 /* ToDo.m */; };
+		890623992045FD9100A4BAA3 /* ToDoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 890623982045FD9100A4BAA3 /* ToDoTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,10 @@
 		890623822045F5A900A4BAA3 /* Every.DoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Every.DoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		890623862045F5A900A4BAA3 /* Every_DoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Every_DoUITests.m; sourceTree = "<group>"; };
 		890623882045F5A900A4BAA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		890623942045F67700A4BAA3 /* ToDo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToDo.h; sourceTree = "<group>"; };
+		890623952045F67700A4BAA3 /* ToDo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToDo.m; sourceTree = "<group>"; };
+		890623972045FD9100A4BAA3 /* ToDoTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToDoTableViewCell.h; sourceTree = "<group>"; };
+		890623982045FD9100A4BAA3 /* ToDoTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToDoTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +121,10 @@
 				8906236D2045F5A900A4BAA3 /* LaunchScreen.storyboard */,
 				890623702045F5A900A4BAA3 /* Info.plist */,
 				890623712045F5A900A4BAA3 /* main.m */,
+				890623942045F67700A4BAA3 /* ToDo.h */,
+				890623952045F67700A4BAA3 /* ToDo.m */,
+				890623972045FD9100A4BAA3 /* ToDoTableViewCell.h */,
+				890623982045FD9100A4BAA3 /* ToDoTableViewCell.m */,
 			);
 			path = Every.Do;
 			sourceTree = "<group>";
@@ -270,8 +280,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				890623962045F67700A4BAA3 /* ToDo.m in Sources */,
 				890623642045F5A900A4BAA3 /* MasterViewController.m in Sources */,
 				890623612045F5A900A4BAA3 /* AppDelegate.m in Sources */,
+				890623992045FD9100A4BAA3 /* ToDoTableViewCell.m in Sources */,
 				890623722045F5A900A4BAA3 /* main.m in Sources */,
 				890623672045F5A900A4BAA3 /* DetailViewController.m in Sources */,
 			);
