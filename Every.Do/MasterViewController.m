@@ -54,20 +54,28 @@
 }
 
 - (void)didSwipe:(UIGestureRecognizer*)gestureRecognizer {
+    
     if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+        
         CGPoint swipeLocation = [gestureRecognizer locationInView:self.tableView];
         NSIndexPath *swipedIndexPath = [self.tableView indexPathForRowAtPoint:swipeLocation];
-        //ToDoTableViewCell* swipedCell = [self.tableView cellForRowAtIndexPath:swipedIndexPath];
+        ToDoTableViewCell* swipedCell = [self.tableView cellForRowAtIndexPath:swipedIndexPath];
         ToDo *object = self.toDoObjects[swipedIndexPath.row];
         [self.toDoObjects removeObjectAtIndex:swipedIndexPath.row];
         [self.toDoObjects addObject:object];
         [object didCompleteItem];
         
-        //Make cell turn red and move to bottom of tableview when it is completed.
+        //Adds strikethrough once task is swiped "completed"
+        NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:swipedCell.titleLabel.text];
+        [attributeString addAttribute:NSStrikethroughStyleAttributeName
+                                value:@2
+                                range:NSMakeRange(0, [attributeString length])];
+        swipedCell.titleLabel.attributedText = attributeString;
+
+        //Changes cell color to red and moves it to bottom of table view once swiped "completed"
         NSInteger lastRowNumber = [self.tableView numberOfRowsInSection:0] - 1;
         NSIndexPath* ip = [NSIndexPath indexPathForRow:lastRowNumber inSection:0];
-        ToDoTableViewCell* movedCell = [self.tableView cellForRowAtIndexPath:swipedIndexPath];
-        [movedCell didComplete];
+        [swipedCell didComplete];
         [self.tableView moveRowAtIndexPath:swipedIndexPath toIndexPath:ip];
 
         [self.tableView reloadData];
@@ -85,7 +93,8 @@
 
 - (void)addToDoItem:(ToDo*)toDoItem {
     
-    [self.toDoObjects addObject:toDoItem];
+    //[self.toDoObjects addObject:toDoItem];
+    [self.toDoObjects insertObject:toDoItem atIndex:0];
     [self.tableView reloadData];
     
 }
