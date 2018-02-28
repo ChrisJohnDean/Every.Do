@@ -18,6 +18,7 @@
 		890623872045F5A900A4BAA3 /* Every_DoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 890623862045F5A900A4BAA3 /* Every_DoUITests.m */; };
 		890623962045F67700A4BAA3 /* ToDo.m in Sources */ = {isa = PBXBuildFile; fileRef = 890623952045F67700A4BAA3 /* ToDo.m */; };
 		890623992045FD9100A4BAA3 /* ToDoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 890623982045FD9100A4BAA3 /* ToDoTableViewCell.m */; };
+		8906239C204612C100A4BAA3 /* AddToDoItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8906239B204612C100A4BAA3 /* AddToDoItemViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		890623952045F67700A4BAA3 /* ToDo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToDo.m; sourceTree = "<group>"; };
 		890623972045FD9100A4BAA3 /* ToDoTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToDoTableViewCell.h; sourceTree = "<group>"; };
 		890623982045FD9100A4BAA3 /* ToDoTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToDoTableViewCell.m; sourceTree = "<group>"; };
+		8906239A204612C100A4BAA3 /* AddToDoItemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddToDoItemViewController.h; sourceTree = "<group>"; };
+		8906239B204612C100A4BAA3 /* AddToDoItemViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddToDoItemViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +128,8 @@
 				890623952045F67700A4BAA3 /* ToDo.m */,
 				890623972045FD9100A4BAA3 /* ToDoTableViewCell.h */,
 				890623982045FD9100A4BAA3 /* ToDoTableViewCell.m */,
+				8906239A204612C100A4BAA3 /* AddToDoItemViewController.h */,
+				8906239B204612C100A4BAA3 /* AddToDoItemViewController.m */,
 			);
 			path = Every.Do;
 			sourceTree = "<group>";
@@ -286,6 +291,7 @@
 				890623992045FD9100A4BAA3 /* ToDoTableViewCell.m in Sources */,
 				890623722045F5A900A4BAA3 /* main.m in Sources */,
 				890623672045F5A900A4BAA3 /* DetailViewController.m in Sources */,
+				8906239C204612C100A4BAA3 /* AddToDoItemViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

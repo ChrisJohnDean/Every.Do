@@ -8,6 +8,7 @@
 
 #import "ToDo.h"
 
+
 @implementation ToDo
 
 - (instancetype)initWithTitle:(NSString*)title withDescription:(NSString*)description withPriorityNumber:(int)prioNum
@@ -23,6 +24,7 @@
 
 - (void)didCompleteItem {
     self.isCompleted = YES;
+    self.todoDescription = @"COMPLETED!!!";
 }
 
 @end

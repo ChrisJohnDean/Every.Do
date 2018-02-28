@@ -10,6 +10,7 @@
 #import "DetailViewController.h"
 #import "ToDo.h"
 #import "ToDoTableViewCell.h"
+#import "AddToDoItemViewController.h"
 
 @interface MasterViewController () <UITableViewDataSource, UITabBarDelegate>
 
@@ -24,9 +25,15 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
+    //create nav bar button to add new todo items
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
     
+    UISwipeGestureRecognizer *gesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
+    [gesture setDirection: (UISwipeGestureRecognizerDirectionLeft |UISwipeGestureRecognizerDirectionRight)];
+    [self.tableView addGestureRecognizer:gesture];
+    
+    //Create todo list objects and add them to array
     ToDo *firstToDo = [[ToDo alloc] initWithTitle:@"Gym" withDescription:@"Curls 4 the Gurlz" withPriorityNumber:1];
     ToDo *secondToDo = [[ToDo alloc] initWithTitle:@"Homework" withDescription:@"Create table view LOL" withPriorityNumber:3];
     ToDo *thirdToDo = [[ToDo alloc] initWithTitle:@"Clean Dishes" withDescription:@"Dishwasher is broken sucker!" withPriorityNumber:2];
@@ -34,8 +41,8 @@
     [self.toDoObjects addObject:firstToDo];
     [self.toDoObjects addObject:secondToDo];
     [self.toDoObjects addObject:thirdToDo];
+    
 }
-
 
 - (void)viewWillAppear:(BOOL)animated {
 }
@@ -46,16 +53,34 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-- (void)insertNewObject:(id)sender {
-    if (!self.objects) {
-        self.objects = [[NSMutableArray alloc] init];
+- (void)didSwipe:(UIGestureRecognizer*)gestureRecognizer {
+    if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+        CGPoint swipeLocation = [gestureRecognizer locationInView:self.tableView];
+        NSIndexPath *swipedIndexPath = [self.tableView indexPathForRowAtPoint:swipeLocation];
+        ToDoTableViewCell* swipedCell = [self.tableView cellForRowAtIndexPath:swipedIndexPath];
+        ToDo *object = self.toDoObjects[swipedIndexPath.row];
+        [object didCompleteItem];
+        swipedCell.backgroundColor = [UIColor redColor];
+        swipedCell.descriptionLabel.font = [UIFont fontWithName:@"System" size:25];
+        [self.tableView reloadData];
     }
-    [self.objects insertObject:[NSDate date] atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
+- (void)insertNewObject:(id)sender {
+    
+    AddToDoItemViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"AddToDoVC"];
+    vc.delegate = self;
+    vc.modalPresentationStyle = UIModalPresentationPopover;
+    [self.navigationController presentViewController:vc animated:YES completion:nil];
+    
+}
+
+- (void)addToDoItem:(ToDo*)toDoItem {
+    
+    [self.toDoObjects addObject:toDoItem];
+    [self.tableView reloadData];
+    
+}
 
 #pragma mark - Segues
 
