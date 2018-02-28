@@ -57,11 +57,19 @@
     if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
         CGPoint swipeLocation = [gestureRecognizer locationInView:self.tableView];
         NSIndexPath *swipedIndexPath = [self.tableView indexPathForRowAtPoint:swipeLocation];
-        ToDoTableViewCell* swipedCell = [self.tableView cellForRowAtIndexPath:swipedIndexPath];
+        //ToDoTableViewCell* swipedCell = [self.tableView cellForRowAtIndexPath:swipedIndexPath];
         ToDo *object = self.toDoObjects[swipedIndexPath.row];
+        [self.toDoObjects removeObjectAtIndex:swipedIndexPath.row];
+        [self.toDoObjects addObject:object];
         [object didCompleteItem];
-        swipedCell.backgroundColor = [UIColor redColor];
-        swipedCell.descriptionLabel.font = [UIFont fontWithName:@"System" size:25];
+        
+        //Make cell turn red and move to bottom of tableview when it is completed.
+        NSInteger lastRowNumber = [self.tableView numberOfRowsInSection:0] - 1;
+        NSIndexPath* ip = [NSIndexPath indexPathForRow:lastRowNumber inSection:0];
+        ToDoTableViewCell* movedCell = [self.tableView cellForRowAtIndexPath:swipedIndexPath];
+        [movedCell didComplete];
+        [self.tableView moveRowAtIndexPath:swipedIndexPath toIndexPath:ip];
+
         [self.tableView reloadData];
     }
 }
@@ -131,7 +139,7 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.objects removeObjectAtIndex:indexPath.row];
+        [self.toDoObjects removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.

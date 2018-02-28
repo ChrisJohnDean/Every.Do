@@ -21,4 +21,11 @@
     // Configure the view for the selected state
 }
 
+- (void)didComplete {
+    self.backgroundColor = [UIColor redColor];
+    self.descriptionLabel.font = [UIFont fontWithName:@"System" size:25];
+    //swipedCell.backgroundColor = [UIColor redColor];
+    //swipedCell.descriptionLabel.font = [UIFont fontWithName:@"System" size:25];
+}
+
 @end

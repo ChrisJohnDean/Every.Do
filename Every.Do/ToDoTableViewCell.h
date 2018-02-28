@@ -13,7 +13,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priorityLabel;
+@property UIColor *color;
+@property UIFont *font;
 
-
+- (void)didComplete;
 
 @end
